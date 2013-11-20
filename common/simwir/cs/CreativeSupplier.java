@@ -1,6 +1,10 @@
 package simwir.cs;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraftforge.common.Configuration;
+import simwir.cs.blocks.BlockLavaSupplier;
+import simwir.cs.lib.BlockReferences;
 import simwir.cs.lib.References;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -9,6 +13,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid=References.MOD_ID, name=References.MOD_NAME, version=References.MOD_VERSION)
 @NetworkMod(clientSideRequired=true, serverSideRequired=false)
@@ -17,35 +23,31 @@ public class CreativeSupplier {
 	@Instance(References.MOD_ID)
 	public static CreativeSupplier instance;
 	
-	/*
-	 * This is where block and items defining id's and defining the block and items are going to be
-	 * Defining id's
-	 *ex. ppublic static int pureGoldShovelId;
-	 *
-	 *Defining blocks and items
-	 *ex. public static Block blockPureIron;
-	 *ex. public static Item goldDust;
-	 *TODO Define Items and Blocks to the game
-	 */
+	//Defining block and item id ints
+	public static int lavaSupplierId;
+	
+	//Defining blocks
+	public static Block lavaSupplier;
+	
+	//Defining Items
+	//ex. public static Item goldDust;
+	
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
 		 Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		 
 		 config.load();
-		 //TODO Add stuff to the config
-		 //ex.  pureIronId = config.getItem(ItemReferences.PURE_IRON_NAME, ItemReferences.PURE_IRON_DEFAULT_ID).getInt();
+		 lavaSupplierId = config.getBlock(BlockReferences.LAVA_SUPPLIER_NAME, BlockReferences.LAVA_SUPPLIER_ID).getInt();
 		 config.save();
 	}
 	
 	@EventHandler
 	public void load(FMLInitializationEvent event){
-		/*
-		 * Adding blocks and items to the actual game
-		 * ex. blockPureIron = new BlockPureIron(blockPureIronId,Material.iron);
-		 * ex. blockPureGold = new BlockPureGold(blockPureGoldId,Material.iron);
-		 * TODO Add blocks and items to game
-		 */
+		
+		// Adding blocks and items to the actual game
+		lavaSupplier = new BlockLavaSupplier(lavaSupplierId, Material.iron);
+		
 		//Registering blocks to game
 		gameRegisters();
 		//Adding block and item names to the game
@@ -66,20 +68,14 @@ public class CreativeSupplier {
 	}
 	
 	private static void gameRegisters(){
-		/*
-		 * Registers blocks to the game. Seems to only be needed on blocks
-		 * ex. GameRegistry.registerBlock(blockPureIron, "blockPureIron");
-		 * TODO Register blocks to the game.
-		 */
+		
+		 // Registers blocks to the game. Seems to only be needed on blocks
+		GameRegistry.registerBlock(lavaSupplier, "lavaSupplier");
 	}
 	
 	private static void languageRegisters(){
-		/*
-		 * Registers block and item names to the game
-		 * ex. LanguageRegistry.addName(blockPureIron, BlockReferences.BLOCK_PURE_IRON_NAME);
-		 * ex. LanguageRegistry.addName(pureIron, ItemReferences.PURE_IRON_NAME);
-		 * TODO Add block and item names to game
-		 */
+		 // Registers block and item names to the game
+		LanguageRegistry.addName(lavaSupplier, BlockReferences.LAVA_SUPPLIER_NAME);
 	}
 	
 }
