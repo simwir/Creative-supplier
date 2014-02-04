@@ -2,6 +2,7 @@ package simwir.cs;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.Configuration;
 import simwir.cs.blocks.BlockLavaSupplier;
 import simwir.cs.lib.BlockReferences;
@@ -32,19 +33,25 @@ public class CreativeSupplier {
 	//Defining Items
 	//ex. public static Item goldDust;
 	
+	//Defining other things
+	public static boolean debug;
+	public static EntityPlayer debugger;
+	
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
+		System.out.println("printing test");
 		 Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		 
 		 config.load();
 		 lavaSupplierId = config.getBlock(BlockReferences.LAVA_SUPPLIER_NAME, BlockReferences.LAVA_SUPPLIER_ID).getInt();
+		 debug = config.get("Other", "Debug", false,References.DEBUG_CONFIG_COMMENT).getBoolean(false);
 		 config.save();
 	}
 	
 	@EventHandler
 	public void load(FMLInitializationEvent event){
-		
+		System.out.println("printing test");
 		// Adding blocks and items to the actual game
 		lavaSupplier = new BlockLavaSupplier(lavaSupplierId, Material.iron);
 		
@@ -59,6 +66,7 @@ public class CreativeSupplier {
 	
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent event){
+		System.out.println("printing test");
 		/*
 		 * There's nothing here.
 		 * 
