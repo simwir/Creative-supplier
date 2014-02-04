@@ -12,6 +12,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidTank;
+import simwir.cs.Debug;
 import simwir.cs.lib.BlockReferences;
 import simwir.cs.lib.References;
 import simwir.utils.ItemUtils;
@@ -39,6 +40,7 @@ public class BlockLavaSupplier extends Block implements IFluidTank{
 	}
 	
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9){
+		Debug.chatln("Lava supplier Right clicked");
 		ItemStack heldItem = par5EntityPlayer.inventory.getCurrentItem();
 		if(FluidContainerRegistry.isBucket(heldItem)){
 			ItemStack fillStack = FluidContainerRegistry.fillFluidContainer(getFluid(), heldItem);
@@ -88,6 +90,7 @@ public class BlockLavaSupplier extends Block implements IFluidTank{
 	public FluidStack drain(int maxDrain, boolean doDrain) {
 		return FluidRegistry.getFluidStack("lava", maxDrain);
 	}
+
 
 	
 
