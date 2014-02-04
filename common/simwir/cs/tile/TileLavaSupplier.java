@@ -12,6 +12,7 @@ import simwir.cs.lib.BlockReferences;
 
 public class TileLavaSupplier extends TileEntity implements IFluidHandler{
 	public final TankHandler tank = new TankHandler(BlockReferences.LAVA_SUPPLIER_UNC_NAME, 16000, this);
+	private String fluid = "lava";
 	
 
 	@Override
@@ -30,7 +31,7 @@ public class TileLavaSupplier extends TileEntity implements IFluidHandler{
 
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
-		return FluidRegistry.getFluidStack("lava", maxDrain);
+		return FluidRegistry.getFluidStack(this.fluid, maxDrain);
 	}
 
 	@Override

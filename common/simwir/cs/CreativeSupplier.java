@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.Configuration;
 import simwir.cs.blocks.BlockLavaSupplier;
+import simwir.cs.blocks.BlockWaterSupplier;
 import simwir.cs.lib.BlockReferences;
 import simwir.cs.lib.References;
 import cpw.mods.fml.common.Mod;
@@ -25,9 +26,11 @@ public class CreativeSupplier {
 	
 	//Defining block and item id ints
 	public static int lavaSupplierId;
+	public static int waterSupplierId;
 	
 	//Defining blocks
 	public static Block lavaSupplier;
+	public static Block waterSupplier;
 	
 	//Defining Items
 	//ex. public static Item goldDust;
@@ -43,6 +46,7 @@ public class CreativeSupplier {
 		 
 		 config.load();
 		 lavaSupplierId = config.getBlock(BlockReferences.LAVA_SUPPLIER_NAME, BlockReferences.LAVA_SUPPLIER_ID).getInt();
+		 waterSupplierId = config.getBlock(BlockReferences.WATER_SUPPLIER_NAME, BlockReferences.WATER_SUPPLIER_ID).getInt();
 		 debug = config.get("Other", "Debug", false,References.DEBUG_CONFIG_COMMENT).getBoolean(false);
 		 config.save();
 	}
@@ -52,6 +56,7 @@ public class CreativeSupplier {
 		System.out.println("printing test");
 		// Adding blocks and items to the actual game
 		lavaSupplier = new BlockLavaSupplier(lavaSupplierId, Material.iron);
+		waterSupplier = new BlockWaterSupplier(waterSupplierId, Material.iron);
 		
 		//Registering blocks to game
 		gameRegisters();
@@ -77,11 +82,13 @@ public class CreativeSupplier {
 		
 		 // Registers blocks to the game. Seems to only be needed on blocks
 		GameRegistry.registerBlock(lavaSupplier, "lavaSupplier");
+		GameRegistry.registerBlock(waterSupplier, "waterSupplier");
 	}
 	
 	private static void languageRegisters(){
 		 // Registers block and item names to the game
 		LanguageRegistry.addName(lavaSupplier, BlockReferences.LAVA_SUPPLIER_NAME);
+		LanguageRegistry.addName(waterSupplier, BlockReferences.WATER_SUPPLIER_NAME);
 	}
 	
 }
