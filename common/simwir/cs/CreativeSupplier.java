@@ -2,7 +2,6 @@ package simwir.cs;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.Configuration;
 import simwir.cs.blocks.BlockLavaSupplier;
 import simwir.cs.lib.BlockReferences;
@@ -35,7 +34,6 @@ public class CreativeSupplier {
 	
 	//Defining other things
 	public static boolean debug;
-	public static EntityPlayer debugger;
 	
 	
 	@EventHandler

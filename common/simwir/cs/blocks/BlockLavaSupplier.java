@@ -1,26 +1,25 @@
 package simwir.cs.blocks;
 
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.IFluidTank;
 import simwir.cs.Debug;
 import simwir.cs.lib.BlockReferences;
 import simwir.cs.lib.References;
+import simwir.cs.tile.TileLavaSupplier;
 import simwir.utils.ItemUtils;
 
-public class BlockLavaSupplier extends Block implements IFluidTank{
+public class BlockLavaSupplier extends BlockContainer{
 
 	/**
-	 * 
 	 * @param par1 The block Id
 	 * @param par2Material The material of the block {@link Material} 
 	 */
@@ -43,7 +42,8 @@ public class BlockLavaSupplier extends Block implements IFluidTank{
 		Debug.chatln("Lava supplier Right clicked");
 		ItemStack heldItem = par5EntityPlayer.inventory.getCurrentItem();
 		if(FluidContainerRegistry.isBucket(heldItem)){
-			ItemStack fillStack = FluidContainerRegistry.fillFluidContainer(getFluid(), heldItem);
+			FluidStack available = FluidRegistry.getFluidStack("lava", 1000);
+			ItemStack fillStack = FluidContainerRegistry.fillFluidContainer(available, heldItem);
 			if(fillStack != null){
 				if(heldItem.stackSize == 1){
 					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, fillStack);
@@ -60,35 +60,11 @@ public class BlockLavaSupplier extends Block implements IFluidTank{
 		}
 		return false;
 	}
-
+	
 	@Override
-	public FluidStack getFluid() {
-		return FluidRegistry.getFluidStack("lava", 1000);
-	}
-
-	@Override
-	public int getFluidAmount() {
-		return 16000;
-	}
-
-	@Override
-	public int getCapacity() {
-		return 16000;
-	}
-
-	@Override
-	public FluidTankInfo getInfo() {
-		return new FluidTankInfo(this);
-	}
-
-	@Override
-	public int fill(FluidStack resource, boolean doFill) {
-		return 0;
-	}
-
-	@Override
-	public FluidStack drain(int maxDrain, boolean doDrain) {
-		return FluidRegistry.getFluidStack("lava", maxDrain);
+	public TileEntity createNewTileEntity(World world) {
+		// TODO Auto-generated method stub
+		return new TileLavaSupplier();
 	}
 
 
