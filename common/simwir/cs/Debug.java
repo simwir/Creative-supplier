@@ -21,13 +21,5 @@ public class Debug {
 			par2Player.addChatMessage("[Creative-Supplier]"+"[Debug]"+par1Message);
 		}
 	}
-	/*
-	public static void chatDebuggerln(String par1Message){
-		EntityPlayer player = CreativeSupplier.debugger;
-		if(debug){
-			
-		}
-	}
-	*/
 
 }
