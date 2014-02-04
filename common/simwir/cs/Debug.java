@@ -11,9 +11,9 @@ public class Debug {
 			System.out.println("[Creative-Supplier]"+"[Debug]"+par1Message);
 		}
 	}
-	public void chatln(String par1Message){
+	public static void chatln(String par1Message){
 		if(debug){
-			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(ChatMessageComponent.createFromText(par1Message));
+			MinecraftServer.getServer().getConfigurationManager().sendChatMsg(ChatMessageComponent.createFromText("[Creative-Supplier]"+"[Debug]"+par1Message));
 		}
 	}
 	public void chatln(String par1Message, EntityPlayer par2Player){
