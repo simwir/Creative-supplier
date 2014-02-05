@@ -36,13 +36,11 @@ public class TileLavaSupplier extends TileEntity implements IFluidHandler{
 
 	@Override
 	public boolean canFill(ForgeDirection from, Fluid fluid) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

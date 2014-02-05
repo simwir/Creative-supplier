@@ -15,7 +15,7 @@ import simwir.cs.Debug;
 import simwir.cs.lib.BlockReferences;
 import simwir.cs.lib.References;
 import simwir.cs.tile.TileLavaSupplier;
-import simwir.utils.ItemUtils;
+import simwir.cs.utils.ItemUtils;
 
 public class BlockLavaSupplier extends BlockContainer{
 
@@ -32,7 +32,6 @@ public class BlockLavaSupplier extends BlockContainer{
 		
 	}
 	
-	//TODO Fix block texture
 	@Override
 	public void registerIcons(IconRegister par1IconRegister){
 		this.blockIcon = par1IconRegister.registerIcon(References.MOD_ID+":"+this.getUnlocalizedName().substring(5));

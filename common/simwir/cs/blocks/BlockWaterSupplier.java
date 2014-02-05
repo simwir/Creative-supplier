@@ -3,7 +3,7 @@ package simwir.cs.blocks;
 import simwir.cs.Debug;
 import simwir.cs.lib.BlockReferences;
 import simwir.cs.tile.TileWaterSupplier;
-import simwir.utils.ItemUtils;
+import simwir.cs.utils.ItemUtils;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
