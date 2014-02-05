@@ -1,4 +1,4 @@
-package simwir.utils;
+package simwir.cs.utils;
 
 import net.minecraft.item.ItemStack;
 
