@@ -3,6 +3,7 @@ package simwir.cs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.Configuration;
+import simwir.cs.blocks.BlockFluidSupplier;
 import simwir.cs.blocks.BlockLavaSupplier;
 import simwir.cs.blocks.BlockWaterSupplier;
 import simwir.cs.lib.BlockReferences;
@@ -27,10 +28,12 @@ public class CreativeSupplier {
 	//Defining block and item id ints
 	public static int lavaSupplierId;
 	public static int waterSupplierId;
+	public static int fluidSupplierId;
 	
 	//Defining blocks
 	public static Block lavaSupplier;
 	public static Block waterSupplier;
+	public static Block fluidSupplier;
 	
 	//Defining Items
 	//ex. public static Item goldDust;
@@ -41,22 +44,23 @@ public class CreativeSupplier {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
-		System.out.println("printing test");
 		 Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		 
 		 config.load();
 		 lavaSupplierId = config.getBlock(BlockReferences.LAVA_SUPPLIER_NAME, BlockReferences.LAVA_SUPPLIER_ID).getInt();
 		 waterSupplierId = config.getBlock(BlockReferences.WATER_SUPPLIER_NAME, BlockReferences.WATER_SUPPLIER_ID).getInt();
+		 fluidSupplierId = config.getBlock(BlockReferences.FLUID_SUPPLIER_NAME, BlockReferences.FLUID_SUPPLIER_ID).getInt();
 		 debug = config.get("Other", "Debug", false,References.DEBUG_CONFIG_COMMENT).getBoolean(false);
 		 config.save();
 	}
 	
 	@EventHandler
 	public void load(FMLInitializationEvent event){
-		System.out.println("printing test");
 		// Adding blocks and items to the actual game
 		lavaSupplier = new BlockLavaSupplier(lavaSupplierId, Material.iron);
 		waterSupplier = new BlockWaterSupplier(waterSupplierId, Material.iron);
+		fluidSupplier = new BlockFluidSupplier(fluidSupplierId, Material.iron);
+		
 		
 		//Registering blocks to game
 		gameRegisters();
@@ -69,7 +73,6 @@ public class CreativeSupplier {
 	
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent event){
-		System.out.println("printing test");
 		/*
 		 * There's nothing here.
 		 * 
@@ -81,14 +84,16 @@ public class CreativeSupplier {
 	private static void gameRegisters(){
 		
 		 // Registers blocks to the game. Seems to only be needed on blocks
-		GameRegistry.registerBlock(lavaSupplier, "lavaSupplier");
-		GameRegistry.registerBlock(waterSupplier, "waterSupplier");
+		GameRegistry.registerBlock(lavaSupplier, BlockReferences.LAVA_SUPPLIER_UNC_NAME);
+		GameRegistry.registerBlock(waterSupplier, BlockReferences.WATER_SUPPLIER_UNC_NAME);
+		GameRegistry.registerBlock(fluidSupplier, BlockReferences.FLUID_SUPPLIER_UNC_NAME);
 	}
 	
 	private static void languageRegisters(){
 		 // Registers block and item names to the game
 		LanguageRegistry.addName(lavaSupplier, BlockReferences.LAVA_SUPPLIER_NAME);
 		LanguageRegistry.addName(waterSupplier, BlockReferences.WATER_SUPPLIER_NAME);
+		LanguageRegistry.addName(fluidSupplier, BlockReferences.FLUID_SUPPLIER_NAME);
 	}
 	
 }
