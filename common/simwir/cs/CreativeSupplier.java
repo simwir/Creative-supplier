@@ -6,8 +6,10 @@ import net.minecraftforge.common.Configuration;
 import simwir.cs.blocks.BlockFluidSupplier;
 import simwir.cs.blocks.BlockLavaSupplier;
 import simwir.cs.blocks.BlockWaterSupplier;
+import simwir.cs.handler.GuiHandler;
 import simwir.cs.lib.BlockReferences;
 import simwir.cs.lib.References;
+import simwir.cs.tile.TileFluidSupplier;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -61,18 +63,22 @@ public class CreativeSupplier {
 		waterSupplier = new BlockWaterSupplier(waterSupplierId, Material.iron);
 		fluidSupplier = new BlockFluidSupplier(fluidSupplierId, Material.iron);
 		
-		
+		new GuiHandler();
 		//Registering blocks to game
 		gameRegisters();
 		//Adding block and item names to the game
 		languageRegisters();
+		registerTileEntities();
 		//Adding recipes
 		//TODO Make recipes class if any recipes needed
 		//Recipies.recipies();
 	}
 	
+	
+
 	@EventHandler
 	public static void postInit(FMLPostInitializationEvent event){
+		Debug.consoleln("Debugging is turned on /n expext a lot of spam");
 		/*
 		 * There's nothing here.
 		 * 
@@ -94,6 +100,10 @@ public class CreativeSupplier {
 		LanguageRegistry.addName(lavaSupplier, BlockReferences.LAVA_SUPPLIER_NAME);
 		LanguageRegistry.addName(waterSupplier, BlockReferences.WATER_SUPPLIER_NAME);
 		LanguageRegistry.addName(fluidSupplier, BlockReferences.FLUID_SUPPLIER_NAME);
+	}
+	private void registerTileEntities() {
+		
+		GameRegistry.registerTileEntity(TileFluidSupplier.class, BlockReferences.FLUID_SUPPLIER_TE_KEY);
 	}
 	
 }

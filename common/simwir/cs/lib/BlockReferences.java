@@ -16,4 +16,7 @@ public class BlockReferences {
 	public static final String LAVA_SUPPLIER_UNC_NAME = "lavaSupplier";
 	public static final String WATER_SUPPLIER_UNC_NAME = "waterSupplier";
 	public static final String FLUID_SUPPLIER_UNC_NAME = "fluidSupplier";
+	
+	//TileEntity keys
+	public static final String FLUID_SUPPLIER_TE_KEY = "fluidSupplierTileEntity";
 }
