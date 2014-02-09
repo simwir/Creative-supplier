@@ -44,7 +44,6 @@ public class BlockFluidSupplier extends BlockContainer{
 		ItemStack heldItem = par5EntityPlayer.inventory.getCurrentItem();
 		if(FluidContainerRegistry.isEmptyContainer(heldItem)){
 			Debug.chatln("Empty fluid container found");
-			//TODO Edit this so that it returns correct fluid and not just lava
 			FluidStack available = FluidRegistry.getFluidStack(TileFluidSupplier.fluid, 1000);
 			ItemStack fillStack = FluidContainerRegistry.fillFluidContainer(available, heldItem);
 			if(fillStack != null){

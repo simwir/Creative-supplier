@@ -33,9 +33,17 @@ public class ContainerFluidSupplier extends Container{
 		return fluidSupplier.isUseableByPlayer(par1entityplayer);
 	}
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
+	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2slot) {
+		/*
+		ItemStack itemstack = null;
+		Slot slot =(Slot) this.inventorySlots.get(par2slot);
+		
+		if(slot != null && slot.getHasStack()){
+			ItemStack itemstack1 = slot.getStack();
+			itemstack=itemstack1.copy();
+		}
+		*/
 		return null;
-		//return super.transferStackInSlot(par1EntityPlayer, par2);
 	}
 
 }

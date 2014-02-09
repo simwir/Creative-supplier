@@ -32,6 +32,14 @@ public class TileFluidSupplier extends TileEntity implements IFluidHandler, IInv
 		fluid = par1fluid;
 	}
 	
+	@Override
+	public void updateEntity() {
+		if(items != null){
+			changeFluid(FluidRegistry.getFluidName(FluidContainerRegistry.getFluidForFilledItem(items)));
+			decrStackSize(0, 1);
+		}
+	}
+	
 	/*
 	 * IFluidHandler
 	 */
