@@ -65,7 +65,6 @@ public class BlockLavaSupplier extends BlockContainer{
 		return new TileLavaSupplier();
 	}
 
-
 	
 
 }

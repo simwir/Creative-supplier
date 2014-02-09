@@ -6,6 +6,7 @@ import net.minecraftforge.common.Configuration;
 import simwir.cs.blocks.BlockFluidSupplier;
 import simwir.cs.blocks.BlockLavaSupplier;
 import simwir.cs.blocks.BlockWaterSupplier;
+import simwir.cs.blocks.tooltip.ToBeRemovedToolTip;
 import simwir.cs.handler.GuiHandler;
 import simwir.cs.lib.BlockReferences;
 import simwir.cs.lib.References;
@@ -90,8 +91,8 @@ public class CreativeSupplier {
 	private static void gameRegisters(){
 		
 		 // Registers blocks to the game. Seems to only be needed on blocks
-		GameRegistry.registerBlock(lavaSupplier, BlockReferences.LAVA_SUPPLIER_UNC_NAME);
-		GameRegistry.registerBlock(waterSupplier, BlockReferences.WATER_SUPPLIER_UNC_NAME);
+		GameRegistry.registerBlock(lavaSupplier, ToBeRemovedToolTip.class, BlockReferences.LAVA_SUPPLIER_UNC_NAME);
+		GameRegistry.registerBlock(waterSupplier, ToBeRemovedToolTip.class, BlockReferences.WATER_SUPPLIER_UNC_NAME);
 		GameRegistry.registerBlock(fluidSupplier, BlockReferences.FLUID_SUPPLIER_UNC_NAME);
 	}
 	
