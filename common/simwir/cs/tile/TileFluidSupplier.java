@@ -12,12 +12,13 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+import simwir.cs.Debug;
 import simwir.cs.handler.TankHandler;
 import simwir.cs.lib.BlockReferences;
 
 public class TileFluidSupplier extends TileEntity implements IFluidHandler, IInventory{
 	public final TankHandler tank = new TankHandler(BlockReferences.FLUID_SUPPLIER_UNC_NAME, 16000, this);
-	public static String fluid = null;
+	public String fluid = null;
 	private ItemStack items;
 	
 	public TileFluidSupplier(){
@@ -28,8 +29,9 @@ public class TileFluidSupplier extends TileEntity implements IFluidHandler, IInv
 	/*
 	 * Custom code
 	 */
-	public static void changeFluid(String par1fluid){
+	public void changeFluid(String par1fluid){
 		fluid = par1fluid;
+		Debug.chatln("Changing fluid");
 	}
 	
 	@Override
@@ -59,7 +61,7 @@ public class TileFluidSupplier extends TileEntity implements IFluidHandler, IInv
 
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
-		return FluidRegistry.getFluidStack(TileFluidSupplier.fluid, maxDrain);
+		return FluidRegistry.getFluidStack(fluid, maxDrain);
 	}
 
 	@Override
@@ -159,6 +161,6 @@ public class TileFluidSupplier extends TileEntity implements IFluidHandler, IInv
 	@Override
 	public void readFromNBT(NBTTagCompound par1nbtTagCompound) {
 		super.readFromNBT(par1nbtTagCompound);
-		TileFluidSupplier.fluid = par1nbtTagCompound.getString("fluid");
+		fluid = par1nbtTagCompound.getString("fluid");
 	}
 }

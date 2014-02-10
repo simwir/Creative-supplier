@@ -41,36 +41,49 @@ public class BlockFluidSupplier extends BlockContainer{
 	
 	public boolean onBlockActivated(World par1World, int x, int y, int z, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9){
 		Debug.chatln(name + " Right clicked");
+		
+		TileFluidSupplier tilefluidsupplier = (TileFluidSupplier) par1World.getBlockTileEntity(x, y, z);
 		ItemStack heldItem = par5EntityPlayer.inventory.getCurrentItem();
-		if(FluidContainerRegistry.isEmptyContainer(heldItem)){
-			Debug.chatln("Empty fluid container found");
-			FluidStack available = FluidRegistry.getFluidStack(TileFluidSupplier.fluid, 1000);
-			ItemStack fillStack = FluidContainerRegistry.fillFluidContainer(available, heldItem);
-			if(fillStack != null){
-				Debug.chatln("Filling container");
-				if(heldItem.stackSize == 1){
-					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, fillStack);
-				}else{
-					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, ItemUtils.consumeItem(heldItem));
-					if(!par5EntityPlayer.inventory.addItemStackToInventory(fillStack)){
-						par5EntityPlayer.dropPlayerItem(fillStack);
+		
+		if(tilefluidsupplier != null){
+			Debug.chatln("Tile entity found at location");
+			
+			if(FluidContainerRegistry.isEmptyContainer(heldItem)){
+				Debug.chatln("Empty fluid container found");
+				FluidStack available = FluidRegistry.getFluidStack(tilefluidsupplier.fluid, 1000);
+				ItemStack fillStack = FluidContainerRegistry.fillFluidContainer(available, heldItem);
+				
+				if(fillStack != null){
+					Debug.chatln("Filling container");
+					
+					if(heldItem.stackSize == 1){
+						par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, fillStack);
+						
+					}else{
+						par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, ItemUtils.consumeItem(heldItem));
+						
+						if(!par5EntityPlayer.inventory.addItemStackToInventory(fillStack)){
+							par5EntityPlayer.dropPlayerItem(fillStack);
+						}
 					}
+					return true;
+				}
+			}else if(FluidContainerRegistry.isFilledContainer(heldItem)){
+					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
+					
+					tilefluidsupplier.changeFluid(FluidRegistry.getFluidName(FluidContainerRegistry.getFluidForFilledItem(heldItem)));
+					Debug.chatln("Changed fluid");
+					return true;
+				
+			}else{
+				Debug.chatln("Didn't find empty fluid container checking if world isn't remote");
+				if(!par1World.isRemote){
+					FMLNetworkHandler.openGui(par5EntityPlayer, CreativeSupplier.instance, 0, par1World, x, y, z);
+					Debug.chatln("world isn't remote opening GUI");
 				}
 				return true;
 			}
-		}else if(FluidContainerRegistry.isFilledContainer(heldItem)){
-				par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
-				TileFluidSupplier.changeFluid(FluidRegistry.getFluidName(FluidContainerRegistry.getFluidForFilledItem(heldItem)));
-				Debug.chatln("Changed fluid");
-				return true;
 			
-		}else{
-			Debug.chatln("Didn't find empty fluid container checking if world isn't remote");
-			if(!par1World.isRemote){
-				FMLNetworkHandler.openGui(par5EntityPlayer, CreativeSupplier.instance, 0, par1World, x, y, z);
-				Debug.chatln("world isn't remote opening GUI");
-			}
-			return true;
 		}
 		return false;
 	}
