@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraftforge.common.Configuration;
 import simwir.cs.blocks.BlockFluidSupplier;
 import simwir.cs.blocks.BlockLavaSupplier;
+import simwir.cs.blocks.BlockPowerSupplier;
 import simwir.cs.blocks.BlockWaterSupplier;
 import simwir.cs.blocks.tooltip.ToBeRemovedToolTip;
 import simwir.cs.handler.GuiHandler;
@@ -32,11 +33,13 @@ public class CreativeSupplier {
 	public static int lavaSupplierId;
 	public static int waterSupplierId;
 	public static int fluidSupplierId;
+	public static int powerSupplierId;
 	
 	//Defining blocks
 	public static Block lavaSupplier;
 	public static Block waterSupplier;
 	public static Block fluidSupplier;
+	public static Block powerSupplier;
 	
 	//Defining Items
 	//ex. public static Item goldDust;
@@ -53,6 +56,7 @@ public class CreativeSupplier {
 		 lavaSupplierId = config.getBlock(BlockReferences.LAVA_SUPPLIER_NAME, BlockReferences.LAVA_SUPPLIER_ID).getInt();
 		 waterSupplierId = config.getBlock(BlockReferences.WATER_SUPPLIER_NAME, BlockReferences.WATER_SUPPLIER_ID).getInt();
 		 fluidSupplierId = config.getBlock(BlockReferences.FLUID_SUPPLIER_NAME, BlockReferences.FLUID_SUPPLIER_ID).getInt();
+		 powerSupplierId = config.getBlock(BlockReferences.POWER_SUPPLIER_NAME, BlockReferences.POWER_SUPPLIER_ID).getInt();
 		 debug = config.get("Other", "Debug", false,References.DEBUG_CONFIG_COMMENT).getBoolean(false);
 		 config.save();
 	}
@@ -63,6 +67,7 @@ public class CreativeSupplier {
 		lavaSupplier = new BlockLavaSupplier(lavaSupplierId, Material.iron);
 		waterSupplier = new BlockWaterSupplier(waterSupplierId, Material.iron);
 		fluidSupplier = new BlockFluidSupplier(fluidSupplierId, Material.iron);
+		powerSupplier = new BlockPowerSupplier(powerSupplierId, Material.iron);
 		
 		new GuiHandler();
 		//Registering blocks to game
@@ -94,6 +99,7 @@ public class CreativeSupplier {
 		GameRegistry.registerBlock(lavaSupplier, ToBeRemovedToolTip.class, BlockReferences.LAVA_SUPPLIER_UNC_NAME);
 		GameRegistry.registerBlock(waterSupplier, ToBeRemovedToolTip.class, BlockReferences.WATER_SUPPLIER_UNC_NAME);
 		GameRegistry.registerBlock(fluidSupplier, BlockReferences.FLUID_SUPPLIER_UNC_NAME);
+		GameRegistry.registerBlock(powerSupplier, BlockReferences.POWER_SUPPLIER_UNC_NAME);
 	}
 	
 	private static void languageRegisters(){
@@ -101,6 +107,7 @@ public class CreativeSupplier {
 		LanguageRegistry.addName(lavaSupplier, BlockReferences.LAVA_SUPPLIER_NAME);
 		LanguageRegistry.addName(waterSupplier, BlockReferences.WATER_SUPPLIER_NAME);
 		LanguageRegistry.addName(fluidSupplier, BlockReferences.FLUID_SUPPLIER_NAME);
+		LanguageRegistry.addName(powerSupplier, BlockReferences.POWER_SUPPLIER_NAME);
 	}
 	private void registerTileEntities() {
 		
