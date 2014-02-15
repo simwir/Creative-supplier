@@ -4,9 +4,11 @@ import java.util.List;
 
 import simwir.cs.blocks.BlockFluidSupplier;
 import simwir.cs.blocks.BlockLavaSupplier;
+import simwir.cs.blocks.BlockPowerSupplier;
 import simwir.cs.blocks.BlockWaterSupplier;
 import simwir.cs.tile.TileFluidSupplier;
 import simwir.cs.tile.TileLavaSupplier;
+import simwir.cs.tile.TilePowerSupplier;
 import simwir.cs.tile.TileWaterSupplier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -49,6 +51,10 @@ public class WailaProviderHandler implements IWailaDataProvider{
 		}else if(accessor.getTileEntity() instanceof TileLavaSupplier||accessor.getTileEntity() instanceof TileWaterSupplier){
 			currenttip.add(EnumChatFormatting.GOLD + "This block is going to be removed");
 			currenttip.add(EnumChatFormatting.GOLD + "Use Fluid Supplier instead");
+		}else if(accessor.getTileEntity() instanceof TilePowerSupplier){
+			NBTTagCompound tag = accessor.getNBTData();
+			double power = tag.getDouble("power");
+			currenttip.add("Output: " + power);
 		}
 		return currenttip;
 	}
@@ -62,6 +68,7 @@ public class WailaProviderHandler implements IWailaDataProvider{
 		par1Registrar.registerBodyProvider(new WailaProviderHandler(), BlockFluidSupplier.class);
 		par1Registrar.registerBodyProvider(new WailaProviderHandler(), BlockWaterSupplier.class);
 		par1Registrar.registerBodyProvider(new WailaProviderHandler(), BlockLavaSupplier.class);
+		par1Registrar.registerBodyProvider(new WailaProviderHandler(), BlockPowerSupplier.class);
 	}
 
 }

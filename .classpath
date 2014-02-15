@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="common"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Minecraft"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/IC 2 API"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Waila API"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
