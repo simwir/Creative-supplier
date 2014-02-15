@@ -11,7 +11,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 public class TilePowerSupplier extends TileEntity implements IEnergySource{
 	private boolean boot = true;
-	public double power = 32;
+	public double power = 0;
 	@Override
 	public void updateEntity() {
 		if(boot){
@@ -30,7 +30,9 @@ public class TilePowerSupplier extends TileEntity implements IEnergySource{
 		MinecraftForge.EVENT_BUS.post(new EnergyTileUnloadEvent(this));
 	}
 	public double getPower(){
-		return power;
+		double pow;
+		pow = power;
+		return pow;
 	}
 
 	/*

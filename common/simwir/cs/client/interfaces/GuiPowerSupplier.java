@@ -45,7 +45,7 @@ public class GuiPowerSupplier extends GuiContainer{
 		}else if(power == 512){
 			drawTexturedModalRect(guiLeft + 44, guiTop + 71, 0, ySize+1, 12, 10);
 		}
-		Debug.consoleln("te.power ==" + te.power);
+		Debug.consoleln("te.power ==" + te.getPower());
 	}
 	
 	@Override
@@ -55,6 +55,10 @@ public class GuiPowerSupplier extends GuiContainer{
 	
 	private static final String LOWUNCHECKED = "32 eu/t";
 	private static final String LOWCHECKED = "32 eu/t [*]";
+	private static final String MEDUNCHECKED = "128 eu/t";
+	private static final String MEDCHECKED = "128 eu/t [*]";
+	private static final String HIGHUNCHECKED = "512 eu/t";
+	private static final String HIGHCHECKED = "512 eu/t [*]";
 	
 	@SuppressWarnings("unchecked")
 	@Override
@@ -63,17 +67,16 @@ public class GuiPowerSupplier extends GuiContainer{
 		buttonList.clear();
 		
 		buttonList.add(new GuiButton(0, guiLeft+54, guiTop+19, 60,20, te.power == 32 ? LOWCHECKED : LOWUNCHECKED));
-		buttonList.add(new GuiButton(1, guiLeft+54, guiTop+43, 60, 20, "128 eu/t"));
-		buttonList.add(new GuiButton(2, guiLeft+54, guiTop+67, 60, 20, "512 eu/t"));
+		buttonList.add(new GuiButton(1, guiLeft+54, guiTop+43, 60, 20, te.power == 128 ? MEDCHECKED : MEDUNCHECKED));
+		buttonList.add(new GuiButton(2, guiLeft+54, guiTop+67, 60, 20, te.power == 512 ? HIGHCHECKED : HIGHUNCHECKED));
 	}
 	
 	@Override
 	protected void actionPerformed(GuiButton par1GuiButton) {
 		Debug.chatln("Button action found");
 		PacketHandler.sendButtenPacket((byte)par1GuiButton.id);
-		if(par1GuiButton.id == 0){
-			par1GuiButton.displayString = te.power == 32 ? LOWCHECKED : LOWUNCHECKED;
-		}
+		//par1GuiButton.displayString = te.power == 32 ? LOWCHECKED : LOWUNCHECKED;
+		
 	}
 	
 
