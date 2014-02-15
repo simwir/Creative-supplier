@@ -11,7 +11,9 @@ import simwir.cs.blocks.tooltip.ToBeRemovedToolTip;
 import simwir.cs.handler.GuiHandler;
 import simwir.cs.lib.BlockReferences;
 import simwir.cs.lib.References;
+import simwir.cs.network.PacketHandler;
 import simwir.cs.tile.TileFluidSupplier;
+import simwir.cs.tile.TilePowerSupplier;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -23,7 +25,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid=References.MOD_ID, name=References.MOD_NAME, version=References.MOD_VERSION)
-@NetworkMod(clientSideRequired=true, serverSideRequired=false)
+@NetworkMod(channels = {References.CHANNEL} , clientSideRequired=true, serverSideRequired=false, packetHandler = PacketHandler.class)
 public class CreativeSupplier {
 	
 	@Instance(References.MOD_ID)
@@ -112,6 +114,7 @@ public class CreativeSupplier {
 	private void registerTileEntities() {
 		
 		GameRegistry.registerTileEntity(TileFluidSupplier.class, BlockReferences.FLUID_SUPPLIER_TE_KEY);
+		GameRegistry.registerTileEntity(TilePowerSupplier.class, BlockReferences.POWER_SUPPLIER_TE_KEY);
 	}
 	
 }

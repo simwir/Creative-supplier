@@ -22,4 +22,5 @@ public class BlockReferences {
 	
 	//TileEntity keys
 	public static final String FLUID_SUPPLIER_TE_KEY = "fluidSupplierTileEntity";
+	public static final String POWER_SUPPLIER_TE_KEY = "powerSupplierTileEntity";
 }

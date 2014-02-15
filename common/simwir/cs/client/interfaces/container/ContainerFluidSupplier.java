@@ -1,10 +1,11 @@
-package simwir.cs.client.interfaces;
+package simwir.cs.client.interfaces.container;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import simwir.cs.client.interfaces.SlotFluidSupplier;
 import simwir.cs.tile.TileFluidSupplier;
 
 public class ContainerFluidSupplier extends Container{

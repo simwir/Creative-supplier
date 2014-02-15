@@ -7,6 +7,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import simwir.cs.client.interfaces.container.ContainerFluidSupplier;
 import simwir.cs.lib.BlockReferences;
 import simwir.cs.lib.References;
 import simwir.cs.tile.TileFluidSupplier;
