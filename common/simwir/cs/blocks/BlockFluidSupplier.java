@@ -69,11 +69,16 @@ public class BlockFluidSupplier extends BlockContainer{
 					return true;
 				}
 			}else if(FluidContainerRegistry.isFilledContainer(heldItem)){
+				if(FluidRegistry.getFluidName(FluidContainerRegistry.getFluidForFilledItem(heldItem))==tilefluidsupplier.fluid){
+					Debug.chatln("Fluid Spplier alreade set to " + tilefluidsupplier.fluid);
+					return true;
+				}else{
 					par5EntityPlayer.inventory.setInventorySlotContents(par5EntityPlayer.inventory.currentItem, null);
 					
 					tilefluidsupplier.changeFluid(FluidRegistry.getFluidName(FluidContainerRegistry.getFluidForFilledItem(heldItem)));
 					Debug.chatln("Changed fluid");
 					return true;
+				}
 				
 			}else{
 				Debug.chatln("Didn't find empty fluid container checking if world isn't remote");
