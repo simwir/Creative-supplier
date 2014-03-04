@@ -50,7 +50,7 @@ public class GuiPowerSupplier extends GuiContainer{
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-		fontRenderer.drawString(BlockReferences.POWER_SUPPLIER_NAME, xSize/2, 6, 0x404040);
+		//fontRenderer.drawString(BlockReferences.POWER_SUPPLIER_NAME, xSize/2, 6, 0x404040);
 	}
 	/*
 	private static final String LOWUNCHECKED = "32 eu/t";
