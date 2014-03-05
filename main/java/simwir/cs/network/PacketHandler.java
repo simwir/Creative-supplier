@@ -1,25 +1,13 @@
 package simwir.cs.network;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+//import net.minecraft.network.INetworkManager;
+//import net.minecraft.network.packet.Packet250CustomPayload;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet250CustomPayload;
-import simwir.cs.Debug;
-import simwir.cs.client.interfaces.container.ContainerPowerSupplier;
-import simwir.cs.lib.References;
-import simwir.cs.tile.TilePowerSupplier;
-
-import com.google.common.io.ByteArrayDataInput;
-import com.google.common.io.ByteStreams;
-
-import cpw.mods.fml.common.network.IPacketHandler;
-import cpw.mods.fml.common.network.PacketDispatcher;
-import cpw.mods.fml.common.network.Player;
-
+//import cpw.mods.fml.common.network.IPacketHandler;
+//import cpw.mods.fml.common.network.PacketDispatcher;
+//import cpw.mods.fml.common.network.Player;
+/*
+ * TODO Find out how to do a packet handler and if it's even needed
 public class PacketHandler implements IPacketHandler{
 
 	@Override
@@ -62,3 +50,4 @@ public class PacketHandler implements IPacketHandler{
 	}
 
 }
+*/

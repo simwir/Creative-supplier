@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
+  "modid": "cs",
+  "name": "Creative Supplier",
   "description": "Example placeholder mod.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authors": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authors": ["Simwir"],
+  "credits": "",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

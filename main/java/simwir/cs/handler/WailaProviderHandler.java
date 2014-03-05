@@ -1,23 +1,13 @@
 package simwir.cs.handler;
 
-import java.util.List;
-
-import simwir.cs.blocks.BlockFluidSupplier;
-import simwir.cs.blocks.BlockLavaSupplier;
-import simwir.cs.blocks.BlockPowerSupplier;
-import simwir.cs.blocks.BlockWaterSupplier;
-import simwir.cs.tile.TileFluidSupplier;
-import simwir.cs.tile.TileLavaSupplier;
-import simwir.cs.tile.TilePowerSupplier;
-import simwir.cs.tile.TileWaterSupplier;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumChatFormatting;
+/*
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
 import mcp.mobius.waila.api.IWailaDataProvider;
 import mcp.mobius.waila.api.IWailaRegistrar;
-
+*/
+/*
+ * TODO Reimplement waila
 public class WailaProviderHandler implements IWailaDataProvider{
 
 	@Override
@@ -72,3 +62,5 @@ public class WailaProviderHandler implements IWailaDataProvider{
 	}
 
 }
+*/
+

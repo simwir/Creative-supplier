@@ -32,6 +32,7 @@ public class BlockFluidSupplier extends BlockContainer{
 		super(Material.iron);
 
 		setBlockName(BlockReferences.FLUID_SUPPLIER_UNC_NAME);
+		//TODO Make it so it doesn't throw an error when you open you inventory
 		setCreativeTab(CreativeTabs.tabBlock);
 		
 	}

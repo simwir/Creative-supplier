@@ -23,7 +23,8 @@ public class TankHandler extends FluidTank{
 		NBTTagCompound tankData = new NBTTagCompound();
 		super.writeToNBT(tankData);
 		writeToNBT(tankData);
-		nbt.setCompoundTag(name, tankData);
+		//TODO find out if you can set a NBT Compoundtag
+		//nbt.setCompoundTag(name, tankData);
 		return nbt;
 	}
 

@@ -5,7 +5,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -104,7 +104,9 @@ public class TileFluidSupplier extends TileEntity implements IFluidHandler, IInv
 				setInventorySlotContents(par1slot, null);
 			}else{
 				itemstack = itemstack.splitStack(par2count);
-				onInventoryChanged();
+				//TODO find out what to do about onInventoryChanged()
+				//was in 1.6 located in net.minecraft.tileentity.TileEntity.class
+				//onInventoryChanged();
 			}
 		}
 		
@@ -121,16 +123,18 @@ public class TileFluidSupplier extends TileEntity implements IFluidHandler, IInv
 	@Override
 	public void setInventorySlotContents(int par1slot, ItemStack par2itemstack) {
 		items = par2itemstack;
-		onInventoryChanged();
+		//TODO find out what to do about onInventoryChanged()
+		//was in 1.6 located in net.minecraft.tileentity.TileEntity.class
+		//onInventoryChanged();
 		
 	}
-
+	
 	@Override
-	public String getInvName() {return null;}
-
+	public String getInventoryName() {return null;}
+	
 	@Override
-	public boolean isInvNameLocalized() {return false;}
-
+	public boolean hasCustomInventoryName() {return false;}
+	
 	@Override
 	public int getInventoryStackLimit() {
 		return 64;
@@ -140,13 +144,12 @@ public class TileFluidSupplier extends TileEntity implements IFluidHandler, IInv
 	public boolean isUseableByPlayer(EntityPlayer par1entityplayer) {
 		return par1entityplayer.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) <= 64;
 	}
+	@Override
+	public void openInventory() {}
 
 	@Override
-	public void openChest() {}
-
-	@Override
-	public void closeChest() {}
-
+	public void closeInventory() {}
+	
 	@Override
 	public boolean isItemValidForSlot(int par1slot, ItemStack par2itemstack) {
 		return FluidContainerRegistry.isFilledContainer(par2itemstack);
@@ -165,4 +168,5 @@ public class TileFluidSupplier extends TileEntity implements IFluidHandler, IInv
 		super.readFromNBT(par1nbtTagCompound);
 		fluid = par1nbtTagCompound.getString("fluid");
 	}
+
 }

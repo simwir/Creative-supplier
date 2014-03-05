@@ -3,13 +3,10 @@ package simwir.cs;
 import net.minecraft.block.Block;
 import net.minecraftforge.common.config.Configuration;
 import simwir.cs.blocks.BlockFluidSupplier;
-import simwir.cs.blocks.BlockPowerSupplier;
-import simwir.cs.blocks.tooltip.ToBeRemovedToolTip;
 import simwir.cs.handler.GuiHandler;
 import simwir.cs.lib.BlockReferences;
 import simwir.cs.lib.References;
 import simwir.cs.tile.TileFluidSupplier;
-import simwir.cs.tile.TilePowerSupplier;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -57,7 +54,8 @@ public class CreativeSupplier {
 	public void load(FMLInitializationEvent event){
 		// Adding blocks and items to the actual game
 		fluidSupplier = new BlockFluidSupplier();
-		powerSupplier = new BlockPowerSupplier();
+		//TODO When IC2 is updated reimplement the power supplier
+		//powerSupplier = new BlockPowerSupplier();
 		
 		new GuiHandler();
 		//Registering blocks to game
@@ -95,7 +93,8 @@ public class CreativeSupplier {
 	private void registerTileEntities() {
 		
 		GameRegistry.registerTileEntity(TileFluidSupplier.class, BlockReferences.FLUID_SUPPLIER_TE_KEY);
-		GameRegistry.registerTileEntity(TilePowerSupplier.class, BlockReferences.POWER_SUPPLIER_TE_KEY);
+		//TODO When IC2 is updated reimplement the power supplier
+		//GameRegistry.registerTileEntity(TilePowerSupplier.class, BlockReferences.POWER_SUPPLIER_TE_KEY);
 	}
 	
 }
