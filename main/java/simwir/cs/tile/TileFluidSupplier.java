@@ -21,10 +21,7 @@ public class TileFluidSupplier extends TileEntity implements IFluidHandler, IInv
 	public String fluid = null;
 	private ItemStack items;
 	
-	public TileFluidSupplier(){
-		//TODO find out if this is needed
-		//items = new ItemStack;
-	}
+	
 	
 	/*
 	 * Custom code
@@ -91,7 +88,6 @@ public class TileFluidSupplier extends TileEntity implements IFluidHandler, IInv
 
 	@Override
 	public ItemStack getStackInSlot(int i) {
-		// TODO Auto-generated method stub
 		return items;
 	}
 

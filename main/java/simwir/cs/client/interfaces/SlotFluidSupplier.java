@@ -13,7 +13,6 @@ public class SlotFluidSupplier extends Slot{
 	
 	@Override
 	public boolean isItemValid(ItemStack par1ItemStack) {
-		// TODO Auto-generated method stub
 		return FluidContainerRegistry.isFilledContainer(par1ItemStack);
 	}
 

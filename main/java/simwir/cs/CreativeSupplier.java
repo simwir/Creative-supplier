@@ -11,7 +11,6 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -51,8 +50,9 @@ public class CreativeSupplier {
 	}
 	
 	@EventHandler
-	public void load(FMLInitializationEvent event){
+	public void init(FMLInitializationEvent event){
 		// Adding blocks and items to the actual game
+		Debug.consoleln("Loading Fluid supplier");
 		fluidSupplier = new BlockFluidSupplier();
 		//TODO When IC2 is updated reimplement the power supplier
 		//powerSupplier = new BlockPowerSupplier();
@@ -66,7 +66,8 @@ public class CreativeSupplier {
 		//TODO Make recipes class if any recipes needed
 		//Recipies.recipies();
 		//Sending message to WAILA
-		FMLInterModComms.sendMessage("Waila", "register", "simwir.cs.handler.WailaProviderHandler.callbackRegister");
+		//TODO Implement Waila
+		//FMLInterModComms.sendMessage("Waila", "register", "simwir.cs.handler.WailaProviderHandler.callbackRegister");
 	}
 	
 	
@@ -86,7 +87,7 @@ public class CreativeSupplier {
 		
 		 // Registers blocks to the game. Seems to only be needed on blocks
 		GameRegistry.registerBlock(fluidSupplier, BlockReferences.FLUID_SUPPLIER_UNC_NAME);
-		GameRegistry.registerBlock(powerSupplier, BlockReferences.POWER_SUPPLIER_UNC_NAME);
+		//GameRegistry.registerBlock(powerSupplier, BlockReferences.POWER_SUPPLIER_UNC_NAME);
 	}
 	
 	
@@ -96,5 +97,5 @@ public class CreativeSupplier {
 		//TODO When IC2 is updated reimplement the power supplier
 		//GameRegistry.registerTileEntity(TilePowerSupplier.class, BlockReferences.POWER_SUPPLIER_TE_KEY);
 	}
-	
+
 }

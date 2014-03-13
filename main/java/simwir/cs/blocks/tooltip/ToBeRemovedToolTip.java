@@ -12,7 +12,6 @@ public class ToBeRemovedToolTip extends ItemBlock{
 
 	public ToBeRemovedToolTip(Block par1) {
 		super(par1);
-		// TODO Auto-generated constructor stub
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

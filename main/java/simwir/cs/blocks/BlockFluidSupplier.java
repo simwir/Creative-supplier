@@ -24,23 +24,22 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockFluidSupplier extends BlockContainer{
 
-	/**
-	 * @param par1 The block Id
-	 * @param par2Material The material of the block {@link Material} 
-	 */
+	
 	public BlockFluidSupplier() {
 		super(Material.iron);
-
+		Debug.consoleln("Fluid supplier registerd");
 		setBlockName(BlockReferences.FLUID_SUPPLIER_UNC_NAME);
 		//TODO Make it so it doesn't throw an error when you open you inventory
-		setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(CreativeTabs.tabBlock);
 		
 	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister){
+		Debug.consoleln("Registering texture for Fluid Supplier");
 		this.blockIcon = par1IconRegister.registerIcon(References.MOD_ID+":"+this.getUnlocalizedName().substring(5));
+		Debug.consoleln("Registered texture for fluid supplier");
 	}
 	
 	@Override
