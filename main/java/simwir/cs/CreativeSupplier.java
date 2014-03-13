@@ -21,15 +21,7 @@ public class CreativeSupplier {
 	@Instance(References.MOD_ID)
 	public static CreativeSupplier instance;
 	
-	//Defining block and item id ints
-	public static int lavaSupplierId;
-	public static int waterSupplierId;
-	public static int fluidSupplierId;
-	public static int powerSupplierId;
-	
 	//Defining blocks
-	public static Block lavaSupplier;
-	public static Block waterSupplier;
 	public static Block fluidSupplier;
 	public static Block powerSupplier;
 	
@@ -47,19 +39,23 @@ public class CreativeSupplier {
 		 config.load();
 		 debug = config.get("Other", "Debug", false,References.DEBUG_CONFIG_COMMENT).getBoolean(false);
 		 config.save();
-	}
-	
-	@EventHandler
-	public void init(FMLInitializationEvent event){
-		// Adding blocks and items to the actual game
+		
+		 // Adding blocks and items to the actual game
 		Debug.consoleln("Loading Fluid supplier");
 		fluidSupplier = new BlockFluidSupplier();
 		//TODO When IC2 is updated reimplement the power supplier
 		//powerSupplier = new BlockPowerSupplier();
 		
-		new GuiHandler();
 		//Registering blocks to game
 		gameRegisters();
+	}
+	
+	@EventHandler
+	public void init(FMLInitializationEvent event){
+		
+		
+		new GuiHandler();
+		
 		//Adding block and item names to the game
 		registerTileEntities();
 		//Adding recipes
@@ -85,7 +81,7 @@ public class CreativeSupplier {
 	
 	private static void gameRegisters(){
 		
-		 // Registers blocks to the game. Seems to only be needed on blocks
+		 // Registers blocks to the game. Only be needed on blocks
 		GameRegistry.registerBlock(fluidSupplier, BlockReferences.FLUID_SUPPLIER_UNC_NAME);
 		//GameRegistry.registerBlock(powerSupplier, BlockReferences.POWER_SUPPLIER_UNC_NAME);
 	}
